@@ -58,9 +58,9 @@ public class AppUserController {
     @GetMapping("/user")
     public ResponseEntity<?> getLoggedUser(@AuthenticationPrincipal UserPrincipal principal){
         try {
-            System.out.println(principal.getUserId());
             AppUser result = appUserService.getUserById(principal.getUserId());
-            return ResponseEntity.ok().body(result);
+            AppUserDto userDto = new AppUserDto(result);
+            return ResponseEntity.ok().body(userDto);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
