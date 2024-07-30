@@ -18,4 +18,6 @@ public interface TradeService {
     void exchangeOfferedItem(long userId1);
 
     ItemTrade saveItemTrade(ItemTrade it);
+
+    List<ItemTrade> getAllByHomeUserId(long homeUserId);
 }

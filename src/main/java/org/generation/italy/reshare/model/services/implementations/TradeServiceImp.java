@@ -99,6 +99,10 @@ public class TradeServiceImp implements TradeService {
         return tradeRepo.save(it);
     }
 
+    @Override
+    public List<ItemTrade> getAllByHomeUserId(long homeUserId) {
+        return tradeRepo.findAllByHomeUserId(homeUserId);
+    }
 
 
 }

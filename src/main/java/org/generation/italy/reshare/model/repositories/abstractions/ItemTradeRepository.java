@@ -12,4 +12,6 @@ public interface ItemTradeRepository extends JpaRepository<ItemTrade, Long> {
     List<ItemTrade> findByRequestDate(LocalDate requestDate);
 
     List<ItemTrade> findByExchangeDate(LocalDate exchangeDate);
+
+    List<ItemTrade> findAllByHomeUserId(long homeUserId);
 }
