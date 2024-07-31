@@ -14,10 +14,8 @@ public interface TradeService {
     List<ItemTrade> getAllByRequestDate(LocalDate requestDate);
     List<ItemTrade> getAllByExchangeDate(LocalDate exchangeDate);
     List<ItemTrade> getAllByItem(String itemName);
-    void exchangeItem(long userId1, long userId2);
-    void exchangeOfferedItem(long userId1);
 
     ItemTrade saveItemTrade(ItemTrade it);
 
-    List<ItemTrade> getAllByHomeUserId(long homeUserId);
+    List<ItemTrade> getByHomeUserIdAndAccepted(long homeUserId, Boolean accepted);
 }

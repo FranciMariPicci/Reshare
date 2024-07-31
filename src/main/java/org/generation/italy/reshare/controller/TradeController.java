@@ -50,9 +50,11 @@ public class TradeController {
     }
 
     @GetMapping("/requesting")
-    public ResponseEntity<?> getHomeUserTradeForLoggedUser(@AuthenticationPrincipal UserPrincipal principal){
+    public ResponseEntity<?> getHomeUserTradeForLoggedUser(
+                                                           @RequestParam(required = false) Boolean accepted,
+                                                           @AuthenticationPrincipal UserPrincipal principal){
          try{
-             List <ItemTrade> trades = tradeService.getAllByHomeUserId(principal.getUserId());
+             List <ItemTrade> trades = tradeService.getByHomeUserIdAndAccepted(principal.getUserId(), accepted);
              return ResponseEntity.ok().body(trades.stream().map(ItemTradeDto::new).toList());
          }catch (Exception e) {
              return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

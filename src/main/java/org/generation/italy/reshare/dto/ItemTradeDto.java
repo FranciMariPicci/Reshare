@@ -36,6 +36,7 @@ public class ItemTradeDto {
         this.homeUserEmail = it.getHomeUser().getEmail();
     }
 
+
     public String getRequestedItemName() {
         return requestedItemName;
     }
