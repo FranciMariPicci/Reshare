@@ -20,11 +20,12 @@ public class ItemDto {
     private String ownerCityName;
     private String ownerName;
     private String ownerEmail;
+    private String cover;
 
     public ItemDto() {
     }
 
-    public ItemDto(Item item){
+    public ItemDto(Item item) {
         this.id = item.getId();
         this.name = item.getName();
         this.condition = item.getCondition();
@@ -36,6 +37,7 @@ public class ItemDto {
         this.ownerCityName = item.getOwner().getCity().getName();
         this.ownerName = item.getOwner().getFullName();
         this.ownerEmail = item.getOwner().getEmail();
+        this.cover = item.getCover();
     }
 
     public void setId(long id) {
@@ -86,7 +88,7 @@ public class ItemDto {
         this.ownerName = ownerName;
     }
 
-    public Item toItem(Category category, AppUser owner){
+    public Item toItem(Category category, AppUser owner){, this.cover
         return new Item(this.id, this.name, this.condition, this.description, this.conditionComment, this.activetrade, category, LocalDate.parse(this.creationDate, DateTimeFormatter.ofPattern("uuuu-MM-dd")), owner);
     }
 
@@ -128,5 +130,13 @@ public class ItemDto {
 
     public void setOwnerCityName(String ownerCityName) {
         this.ownerCityName = ownerCityName;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 }

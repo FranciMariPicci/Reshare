@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
-@Table (name = "object")
+@Table(name = "object")
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Item {
     private String description;
     private boolean activetrade;
     private String condition;
-    @Column (name = "creation_date")
+    @Column(name = "creation_date")
     private LocalDate creationDate;
     @Column(name = "condition_comment")
     private String conditionComment;
@@ -28,12 +28,14 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private AppUser owner;
+    private String cover;
     public static final List<String> CONDITIONS = Arrays.asList("comenuovo", "ottimo", "buono", "accettabile");
 
     public Item() {
     }
 
-    public Item(long id, String name, String condition, String description, String conditionComment, boolean activetrade,Category category, LocalDate creationDate, AppUser owner) {
+    public Item(long id, String name, String condition, String description, String conditionComment,
+            boolean activetrade, Category category, LocalDate creationDate, AppUser owner) {
         this.id = id;
         this.name = name;
         this.condition = condition;
@@ -43,6 +45,12 @@ public class Item {
         this.category = category;
         this.creationDate = creationDate;
         this.owner = owner;
+    }
+
+    public Item(long id, String name, String condition, String description, String conditionComment,
+            boolean activetrade, Category category, LocalDate creationDate, AppUser owner, String cover) {
+        this(id, name, condition, description, conditionComment, activetrade, category, creationDate, owner);
+        this.cover = cover;
     }
 
     public long getId() {
@@ -83,5 +91,13 @@ public class Item {
 
     public Category getCategory() {
         return category;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
     }
 }
