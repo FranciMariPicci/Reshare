@@ -88,7 +88,7 @@ public class ItemDto {
         this.ownerName = ownerName;
     }
 
-    public Item toItem(Category category, AppUser owner){, this.cover
+    public Item toItem(Category category, AppUser owner){
         return new Item(this.id, this.name, this.condition, this.description, this.conditionComment, this.activetrade, category, LocalDate.parse(this.creationDate, DateTimeFormatter.ofPattern("uuuu-MM-dd")), owner);
     }
 
