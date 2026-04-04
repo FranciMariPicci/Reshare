@@ -35,7 +35,8 @@ public class ItemController {
             @RequestParam("categoryName") String categoryName,
             @RequestParam("ownerEmail") String ownerEmail,
             @RequestParam("creationDate") String creationDate,
-            @RequestParam(value = "cover", required = false) MultipartFile coverFile) throws IOException {
+            @RequestParam("activetrade") boolean activetrade,
+            @RequestParam(value = "file", required = false) MultipartFile coverFile) throws IOException {
 
         // Salviamo il file della copertina se presente
         String coverPath = null;
