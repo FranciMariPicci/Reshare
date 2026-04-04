@@ -33,7 +33,7 @@ public class AppUserServiceImp implements AppUserService {
     @Override
     public AppUser getUserById(long id) throws EntityNotFoundException {
         Optional<AppUser> u = appUserRepo.findById(id);
-        if(u.isEmpty()){
+        if (u.isEmpty()) {
             throw new EntityNotFoundException(u.getClass(), id);
         }
         return u.get();
@@ -49,5 +49,12 @@ public class AppUserServiceImp implements AppUserService {
         return cityRepo.findByName(name);
     }
 
-
+    @Override
+    public AppUser updateUserCity(long userId, long cityId) throws EntityNotFoundException {
+        AppUser user = getUserById(userId);
+        City city = cityRepo.findById(cityId)
+                .orElseThrow(() -> new EntityNotFoundException(City.class, cityId));
+        user.setCity(city);
+        return appUserRepo.save(user);
+    }
 }

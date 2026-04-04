@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "app_user")
+@Table(name = "app_user")
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,14 @@ public class AppUser {
     @JoinColumn(name = "city_id")
     private City city;
     private String password;
-    @OneToMany (mappedBy = "wishingUser")
+    @OneToMany(mappedBy = "wishingUser")
     private List<ItemType> wishlist = new ArrayList<>();
 
     public AppUser() {
     }
 
-    public AppUser(String firstname, String lastname, String email, String phone, String gender, LocalDate birthdate, String description, City city) {
+    public AppUser(String firstname, String lastname, String email, String phone, String gender, LocalDate birthdate,
+            String description, City city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -40,7 +41,8 @@ public class AppUser {
         this.city = city;
     }
 
-    public AppUser(String firstname, String lastname, String email, String phone, String gender, LocalDate birthdate, String description, City city, String password) {
+    public AppUser(String firstname, String lastname, String email, String phone, String gender, LocalDate birthdate,
+            String description, City city, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -95,6 +97,10 @@ public class AppUser {
 
     public City getCity() {
         return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getPassword() {
